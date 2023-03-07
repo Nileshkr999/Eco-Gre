@@ -1,0 +1,361 @@
+
+<!--register.html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <form th:action="@{/register}" th:object="${user}" method="post">
+    <h3>Registration</h3>
+    <input type="text" th:field="*{firstName}" placeholder="First Name" /> <br/><br/>
+    <input type="text" th:field="*{lastName}" placeholder="Last Name" /> <br/><br/>
+    <input type="text" th:field="*{mobile}" placeholder="Mobile Number" /> <br/><br/>
+    <input type="text" th:field="*{email}" placeholder="Email" /> <br/><br/>
+    <input type="password" th:field="*{password}" placeholder="Password" /> <br/><br/>
+    <select th:field="*{role}" required>
+      <option value="">Select</option>
+      <option value="ADMIN">ADMIN</option>
+      <option value="USER">USER</option>
+    </select> <br/><br/>
+    <button type="submit">Register</button> | <a th:href="@{|/login|}" th:text="'Log in'"></a>
+    <span th:utext="${successMessage}"></span>
+    <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
+      <ul th:each="data : ${bindingResult.getAllErrors()}">
+        <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+      </ul>
+    </div>
+</form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" th:href="@{/css/regist.css}">
+<title>Signup</title>
+</head>
+
+<!-- css style for register page -->
+
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	height: 100vh;
+	width: 100vw;
+	background-color: #91b806;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card {
+	background: #fff;
+	width: 900px;
+	min-height: 400px;
+	box-shadow: rgba(20, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3)
+		0px 3px 7px -3px;
+	display: flex;
+}
+
+.form, .image {
+	width: 50%;
+}
+
+.image {
+	background-image: url('../user/loginphoto.jpeg');
+	background-size: cover;
+	background-position: left;
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(23, 23, 24, 0.31);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.overlay h3 {
+	color: white;
+	letter-spacing: 1px;
+	font-size: 25px;
+	font-weight: 700;
+	opacity: 0.6;
+}
+
+.overlay p {
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	opacity: 0.6;
+}
+
+.form {
+	padding: 60px 25px;
+	display: flex;
+	flex-direction: column;
+}
+
+.form h3 {
+	font-size: 28px;
+	font-weight: 500;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.form h3::after {
+	content: '';
+	width: 30px;
+	height: 3px;
+	background: #91b806;
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	border-radius: 5px;
+}
+
+.fa {
+	color: #91b806;
+	position: absolute;
+	top: 10px;
+	font-size: 18px;
+}
+
+.input-field {
+	width: 100%;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.input-field input {
+	display: block;
+	width: 100%;
+	padding: 10px 30px;
+	outline: none;
+	border: none;
+	border-bottom: 2px solid rgb(182, 180, 180);
+	font-size: 15px;
+}
+
+.form>a {
+	color: #7227D5;
+	text-decoration: none;
+	font-size: 14px;
+	margin-bottom: 35px
+}
+
+button {
+	height: 45px;
+	background: #91b806;
+	border: none;
+	color: white;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
+button+p {
+	text-align: center;
+	padding-top: 30px;
+	font-size: 14px;
+}
+
+button+p a {
+	text-decoration: none;
+	color: #7227D5;
+	font-weight: 500;
+}
+
+input::placeholder {
+	font-family: 'Poppins', sans-serif;
+}
+
+@import
+	url('https://fonts.googleapis.com/css?family=Lato:400,500,600,700&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+}
+
+html, body {
+	display: grid;
+	height: 100%;
+	place-items: center;
+	font-family: 'Lato', sans-serif;
+}
+
+.wrapper {
+	display: inline-flex;
+	background: #fff;
+	height: 100px;
+	width: 400px;
+	align-items: center;
+	justify-content: space-evenly;
+	border-radius: 5px;
+	padding: 20px 15px;
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.wrapper .option {
+	background: #fff;
+	height: 60%;
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 0 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 0 10px;
+	border: 2px solid lightgrey;
+	transition: all 0.3s ease;
+}
+
+.wrapper .option .dot {
+	height: 20px;
+	width: 20px;
+	background: #d9d9d9;
+	border-radius: 50%;
+	position: relative;
+}
+
+.wrapper .option .dot::before {
+	position: absolute;
+	content: "";
+	top: 4px;
+	left: 4px;
+	width: 12px;
+	height: 12px;
+	background: #91b806;
+	border-radius: 50%;
+	opacity: 0;
+	transform: scale(1.5);
+	transition: all 0.3s ease;
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+#option-1:checked:checked ~ .option-1, #option-2:checked:checked ~
+	.option-2 {
+	border-color: #91b806;
+	background: #91b806;
+}
+
+#option-1:checked:checked ~ .option-1 .dot, #option-2:checked:checked ~
+	.option-2 .dot {
+	background: #fff;
+}
+
+#option-1:checked:checked ~ .option-1 .dot::before, #option-2:checked:checked 
+	~ .option-2 .dot::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.wrapper .option span {
+	font-size: 20px;
+	color: #808080;
+}
+
+#option-1:checked:checked ~ .option-1 span, #option-2:checked:checked ~
+	.option-2 span {
+	color: #fff;
+}
+</style>
+
+<body>
+	<form th:action="@{/login}" method="POST" class="form-signin">
+		<h3 th:text="Login"></h3>
+		<div class="card">
+			<div class="form">
+				<h3>Sign up</h3>
+				<div class="input-field">
+					<i class="fa fa-lock"></i> <input type="text"
+						th:field="*{firstName}" placeholder="Enter your Name" />
+				</div>
+				<div class="input-field">
+					<i class="fa fa-lock"></i> <input type="text"
+						th:field="*{lastName}" placeholder="Enter your Name" />
+				</div>
+				<div class="input-field">
+					<i class="fa fa-lock"></i> <input type="text" th:field="*{mobile}"
+						placeholder="Mobile Number" />
+				</div>
+				<div class="input-field">
+					<i class="fa fa-envelope"></i> <input type="text"
+						th:field="*{email}" placeholder="Email" />
+				</div>
+				<div class="input-field">
+					<i class="fa fa-lock"></i> <input type="password"
+						th:field="*{password}" placeholder="Password" />
+				</div>
+				<div class="wrapper" th:field="*{role}" required>
+					<input type="radio" name="select" id="option-1" checked> <input
+						type="radio" name="select" id="option-2"> <label
+						for="option-1" class="option option-1">
+						<div class="dot"></div> <span>Admin</span>
+					</label> <label for="option-2" class="option option-2">
+						<div class="dot"></div> <span>User</span>
+					</label>
+				</div>
+				<button th:text="Login">Sign Up</button>
+				<span th:utext="${successMessage}"></span>
+				<div
+					th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
+					<ul th:each="data : ${bindingResult.getAllErrors()}">
+						<li
+							th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+					</ul>
+				</div>
+				<div class="tacbox">
+					<input id="checkbox" type="checkbox" /> <label for="checkbox">
+						I agree to these <a
+						style="color: #91b806; text-decoration: underline;">Terms and
+							Conditions | </a>
+					</label> <a style="color: #91b806; text-decoration: underline;"
+						th:href="@{/login}">Login</a>
+				</div>
+
+				<br>
+				<div>
+					</p>
+				</div>
+				<br />
+			</div>
+			<div class="image">
+				<div class="overlay">
+					<h3>
+						Every new friend is a<br>new adventure
+					</h3>
+					<p>let's get connected</p>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

@@ -27,11 +27,38 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" th:href="@{/css/log.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Login</title>
 </head>
 <!-- css style body login page program -->
 
 <style>
+	body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
+.w3-red, .w3-hover-red:hover {
+    /* color: #fff!important;
+    background-color: #37b532!important; */
+	/* background: rgb(255,255,255)!important;
+background-color: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(39,137,38,1) 1%, rgba(116,181,77,1) 100%, rgba(161,226,122,1) 100%)!important; */
+background: rgb(26,98,0)!important;
+background: linear-gradient(90deg, rgba(26,98,0,1) 0%, rgba(71,170,1,1) 100%)!important;
+}
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap')
 	;
@@ -46,7 +73,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	height: 100vh;
 	width: 100vw;
-	background-color: #91b806;
+	background-color:  #37b532;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -114,7 +141,7 @@ body {
 	content: '';
 	width: 30px;
 	height: 3px;
-	background: #91b806;
+	background:  #37b532;
 	position: absolute;
 	left: 0;
 	bottom: 2px;
@@ -122,7 +149,7 @@ body {
 }
 
 .fa {
-	color: #91b806;
+	color:  #37b532;
 	position: absolute;
 	top: 10px;
 	font-size: 18px;
@@ -153,7 +180,7 @@ body {
 
 button {
 	height: 45px;
-	background: #91b806;
+	background:  #37b532;
 	border: none;
 	color: white;
 	border-radius: 5px;
@@ -175,10 +202,42 @@ button+p a {
 input::placeholder {
 	font-family: 'Poppins', sans-serif;
 }
+.w3-red, .w3-hover-red:hover {
+    color: #fff!important;
+     background-c#37b532!important;
+}
 </style>
+<!-- Navbar -->
+<div class="w3-top">
+	<div class="w3-bar w3-red w3-card w3-left-align w3-large">
+		<a
+			class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+			href="javascript:void(0);" onclick="myFunction()"
+			title="Toggle Navigation Menu">
+		<i class="fa fa-bars"></i></a>
+		<a th:href="@{|/|}" th:text="'Home'" class="w3-bar-item w3-button w3-padding-large w3-white" id="homButton">Home</a>
+			<a th:href="@{|/world|}" th:text="'World'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="worButton">World</a>
+			<a th:href="@{|/india|}" th:text="'India'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="indButton">India</a>
+			<a th:href="@{|/states|}" th:text="'States'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="staButton">States</a>
+			<a th:href="@{|/about-us|}" th:text="'AboutUs'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="aboButton">AboutUs</a> 
+			<a th:href="@{|/login|}" th:text="'Log in'" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="logButton">Login</a> 
+			<a th:href="@{|/register|}" th:text="'Registration'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="regButton">Registration</a>
+	</div>
+
+	<!-- Navbar on small screens -->
+	<div id="navDemo"
+		class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+		<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-1</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-2</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-3</a>
+		<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-4</a>
+		<a href="../templates/login.html"class="w3-bar-item w3-button w3-padding-large">Link-5</a> 
+		<a href="../templates/register.html"class="w3-bar-item w3-button w3-padding-large"th:href="@{|/register|}" th:text="'Register'">Link-6</a>
+	</div>
+</div>
 
 <body>
-	<form th:action="@{/login}" method="POST" class="form-signin">
+	<form th:action="@{/dashboard}" method="POST" class="form-signin">
 		<h3 th:text="Login"></h3>
 		<div class="card">
 			<div class="form">
@@ -191,12 +250,12 @@ input::placeholder {
 					<i class="fa fa-lock"></i> <input type="password"
 						th:placeholder="Password">
 				</div>
-				<a style="color: #91b806;" class="forgot" href="#">Forgot
+				<a style="color: #37b532;" class="forgot" href="#">Forgot
 					password?</a>
 
 				<button th:text="Login">Login</button>
 				<p>
-					Don't have an account? <a style="color: #91b806;"
+					Don't have an account? <a style="color: #37b532;"
 						th:href="@{|/register|}">Signup now</a>
 				</p>
 				<br>

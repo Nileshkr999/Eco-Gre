@@ -1,10 +1,178 @@
 <!--about-us.html-->
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>About Us</title>
-</head>
-<body>
-	<h2>About Us</h2>
-</body>
-</html>
+	<!DOCTYPE html>
+	<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<title>About Us</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	body, h1, h2, h3, h4, h5, h6 {
+		font-family: "Lato", sans-serif
+	}
+	
+	.w3-bar, h1, button {
+		font-family: "Montserrat", sans-serif
+	}
+	
+	.fa-anchor, .fa-coffee {
+		font-size: 200px
+	}
+	.w3-red, .w3-hover-red:hover {
+		/* color: #fff!important;
+		background-color: #37b532!important; */
+		background: rgb(26,98,0)!important;
+background: linear-gradient(90deg, rgba(26,98,0,1) 0%, rgba(71,170,1,1) 100%)!important;
+		
+	}
+	</style>
+	</head>
+	<body>
+	
+		<!-- Navbar -->
+		<div class="w3-top">
+			<div class="w3-bar w3-red w3-card w3-left-align w3-large">
+				<a
+					class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+					href="javascript:void(0);" onclick="myFunction()"
+					title="Toggle Navigation Menu">
+				<i class="fa fa-bars"></i></a>
+				<a th:href="@{|/|}" th:text="'Home'" class="w3-bar-item w3-button w3-padding-large w3-white" id="homButton">Home</a>
+			<a th:href="@{|/world|}" th:text="'World'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="worButton">World</a>
+			<a th:href="@{|/india|}" th:text="'India'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="indButton">India</a>
+			<a th:href="@{|/states|}" th:text="'States'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="staButton">States</a>
+			<a th:href="@{|/about-us|}" th:text="'AboutUs'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="aboButton">AboutUs</a> 
+			<a th:href="@{|/login|}" th:text="'Log in'" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="logButton">Login</a> 
+			<a th:href="@{|/register|}" th:text="'Registration'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="regButton">Registration</a>
+			</div>
+	
+			<!-- Navbar on small screens -->
+			<div id="navDemo"class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+				<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-1</a>
+				<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-2</a>
+				<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-3</a>
+				<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-4</a>
+				<a href="../templates/login.html"class="w3-bar-item w3-button w3-padding-large">Link-5</a> 
+				<a href="../templates/register.html"class="w3-bar-item w3-button w3-padding-large"th:href="@{|/register|}" th:text="'Register'">Link-6</a>
+			</div>
+		</div>
+	
+		<!-- Header -->
+		<header class="w3-container w3-red w3-center"
+			style="padding: 128px 16px">
+			<h1 class="w3-margin w3-jumbo">About-Us</h1>
+			<p class="w3-xlarge">“There’s a way to do it better — find it.” –
+				Thomas Edison</p>
+			<button
+				class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get
+				Started</button>
+		</header>
+		<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+			<h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+		</div>
+		<!-- Footer -->
+		<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+			<div class="w3-xlarge w3-padding-32">
+				<i class="fa fa-facebook-official w3-hover-opacity"></i> <i
+					class="fa fa-instagram w3-hover-opacity"></i> <i
+					class="fa fa-snapchat w3-hover-opacity"></i> <i
+					class="fa fa-pinterest-p w3-hover-opacity"></i> <i
+					class="fa fa-twitter w3-hover-opacity"></i> <i
+					class="fa fa-linkedin w3-hover-opacity"></i>
+			</div>
+			<p>
+				Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+					target="_blank">w3.css</a>
+			</p>
+		</footer>
+	
+		<script>
+	// // Used to toggle the menu on small screens when clicking on the menu button
+	// function myFunction() {
+	//   var x = document.getElementById("navDemo");
+	//   if (x.className.indexOf("w3-show") == -1) {
+	//     x.className += " w3-show";
+	//   } else { 
+	//     x.className = x.className.replace(" w3-show", "");
+	//   }
+	// }
+	
+	
+	// For Home Page
+var homeButton = document.getElementById("homButton");
+
+// add a click event listener to the login button
+homeButton.addEventListener("click", function() {
+  // navigate to the login.html page
+  window.location.href = "homepage";
+});
+
+//world page
+// get a reference to the login button element
+var worButton = document.getElementById("worButton");
+
+// add a click event listener to the login button
+worButton.addEventListener("click", function() {
+  // navigate to the login.html page
+  window.location.href = "world";
+});
+
+//india
+// get a reference to the login button element
+var indButton = document.getElementById("indButton");
+
+// add a click event listener to the login button
+indButton.addEventListener("click", function() {
+  // navigate to the login.html page
+  window.location.href = "india";
+});
+//states page
+// get a reference to the login button element
+var staButton = document.getElementById("staButton");
+
+// add a click event listener to the login button
+staButton.addEventListener("click", function() {
+  // navigate to the login.html page
+  window.location.href = "state";
+});
+
+//about us
+// get a reference to the login button element
+var aboButton = document.getElementById("aboButton");
+
+// add a click event listener to the login button
+aboButton.addEventListener("click", function() {
+  // navigate to the login.html page
+  window.location.href = "about-us";
+});
+
+//login page
+// get a reference to the login button element
+var logButton = document.getElementById("logButton");
+
+// add a click event listener to the login button
+logButton.addEventListener("click", function() {
+  // navigate to the login.html page
+  window.location.href = "login";
+});
+
+//Registration Page
+// get a reference to the login button element
+var regButton = document.getEle("regButton");
+
+// add a click event listener to the login button
+regButton.addEventListener("click", function() {
+  // navigate to the login.html page
+  window.location.href = "register";
+});
+
+	</script>
+	
+	</body>
+	</html>

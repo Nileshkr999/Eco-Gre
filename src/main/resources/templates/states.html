@@ -53,19 +53,20 @@ background: linear-gradient(90deg, rgba(26,98,0,1) 0%, rgba(71,170,1,1) 100%)!im
 		<!-- Navbar on small screens -->
 		<div id="navDemo"
 			class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-1</a>
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-2</a>
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-3</a>
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">Link-4</a>
-			<a href="../templates/login.html"class="w3-bar-item w3-button w3-padding-large">Link-5</a> 
-			<a href="../templates/register.html"class="w3-bar-item w3-button w3-padding-large"th:href="@{|/register|}" th:text="'Register'">Link-6</a>
+			<a th:href="@{|/|}" th:text="'Home'" class="w3-bar-item w3-button w3-padding-large w3-white" id="homButton">Home</a>
+			<a th:href="@{|/world|}" th:text="'World'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="worButton">World</a>
+			<a th:href="@{|/india|}" th:text="'India'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="indButton">India</a>
+			<a th:href="@{|/states|}" th:text="'States'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="staButton">States</a>
+			<a th:href="@{|/about-us|}" th:text="'AboutUs'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="aboButton">AboutUs</a> 
+			<a th:href="@{|/login|}" th:text="'Log in'" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="logButton">Login</a> 
+			<a th:href="@{|/register|}" th:text="'Registration'"class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"id="regButton">Registration</a>
 		</div>
 	</div>
 
 	<!-- Header -->
 	<header class="w3-container w3-red w3-center"
 		style="padding: 128px 16px">
-		<h1 class="w3-margin w3-jumbo">World</h1>
+		<h1 class="w3-margin w3-jumbo">States</h1>
 		<p class="w3-xlarge">“There’s a way to do it better — find it.” –
 			Thomas Edison</p>
 		<button

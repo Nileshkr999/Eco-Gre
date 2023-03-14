@@ -1,29 +1,4 @@
-<!--user/dashboard.html
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>User Dashboard</title>
-</head>
-<body>
-	<h2>Welcome to User Dashboard</h2>
-	<p>
-		Logged as: <span sec:authentication="name"></span>
-	</p>
-	<p>
-		Has role: <span sec:authentication="authorities"></span>
-	</p>
-	<div>
-		<p>
-			<a th:href="@{/}">Home</a>
-		</p>
-		<p>
-			<a th:href="@{/logout}">Log out</a>
-		</p>
-	</div>
-</body>
-</html>-->
-
-   <style>
+ <style>
 
    /* Googlefont Poppins CDN Link */
    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -161,7 +136,7 @@
 	 position: absolute;
 	 height: 40px;
 	 width: 40px;
-	 background: #37b532;;
+	 background: #37b532;
 	 right: 5px;
 	 top: 50%;
 	 transform: translateY(-50%);
@@ -574,8 +549,8 @@
       <div class="overview-boxes">
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Total Order</div>
-            <div class="number">40,876</div>
+            <div class="box-topic">Total Students</div>
+            <div class="number">120</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
               <span class="text">Up from yesterday</span>
@@ -617,15 +592,13 @@
           <i class='bx bxs-cart-download cart four' ></i>
         </div>
       </div>
-
-    
           </li>
           </ul>
         </div>
       </div>
     </div>
+	<canvas id="pieChart"></canvas>
   </section>
-
   <script>
    let sidebar = document.querySelector(".sidebar");
 let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -636,6 +609,23 @@ sidebarBtn.onclick = function() {
 }else
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
+//pie
+var ctxP = document.getElementById("pieChart").getContext('2d');
+  var myPieChart = new Chart(ctxP, {
+    type: 'pie',
+    data: {
+      labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+      datasets: [{
+        data: [300, 50, 100, 40, 120],
+        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+
  </script>
 
 </body>

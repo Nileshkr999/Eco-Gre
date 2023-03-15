@@ -1,14 +1,17 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
@@ -55,6 +58,19 @@ public class AuthController {
 	@RequestMapping(value = { "/dashboard01" })
 	public String deshboards() {
 		return "admin/dashboard01";
+	}
+
+	@GetMapping("/table")
+	private ModelAndView getAllBooks() throws IOException, InterruptedException {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("allUsers");
+		mav.addObject("users", userService.getAll());
+		return mav;
+	}
+	
+	@GetMapping("/dash")
+	public List<User> dash(){
+		return userService.getAll();
 	}
 
 	// @RequestMapping(value = { "/register" }, method = RequestMethod.POST)

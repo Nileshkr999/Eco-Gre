@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,10 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
 
 
 
@@ -61,4 +61,10 @@ public class UserServiceImp implements UserService, UserDetailsService {
                         String.format("USER_NOT_FOUND", email)
                 ));
     }
+
+	@Override
+	public List<User> getAll() {
+		return userRepository.findAll();
+		
+	}
 }

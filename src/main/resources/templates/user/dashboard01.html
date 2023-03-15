@@ -640,27 +640,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th>001</th>
-					<th>First_Name</th>
-					<th>Last_Name</th>
-					<th>First_Name</th>
-					<th>Last_Name</th>
-					<th>First_Name</th>					
+				<tr th:each="users: ${users}">
+					<td th:text="${users.ID}" />
+					<td th:text="${users.First_Name}"/>
+					<td th:text="${users.Last_Name}" />
+					<td th:text="${users.Email}" />
+					<td th:text="${users.Mobile}" />
+					<td th:text="${users.Role}" />
 				</tr>
-				<tr class="active-row">
-					<th>First_Name</th>
-					<th>Last_Name</th>
-					<th>First_Name</th>
-					<th>Last_Name</th>
-					<th>First_Name</th>
-					<th>Last_Name</th>
-				</tr>
-				<!-- and so on... -->
 			</tbody>
 		</table>
           </ul>
-        </div>
       </div>
     </div>
 	

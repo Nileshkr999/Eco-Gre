@@ -52,6 +52,11 @@ public class AuthController {
 		return "admin/dashboard";
 	}
 
+	@RequestMapping(value = { "/dashboard01" })
+	public String deshboards() {
+		return "admin/dashboard01";
+	}
+
 	// @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	@PostMapping("/register")
 	public String registerUser(Model model, @Valid User user, BindingResult bindingResult) {

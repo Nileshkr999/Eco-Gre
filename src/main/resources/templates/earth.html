@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>      
+<head>
+    <title>
+        Creating Search Bar using HTML
+        CSS and Javascript
+    </title>
+      
+    <!-- linking the stylesheet(CSS) -->
+    <link rel="stylesheet" type="text/css" href="./koo.css">
+</head>
+<style>
+
+#searchbar{
+     margin-left: 15%;
+     padding:15px;
+     border-radius: 10px;
+   }
+ 
+   input[type=text] {
+      width: 30%;
+      -webkit-transition: width 0.15s ease-in-out;
+      transition: width 0.15s ease-in-out;
+   }
+ 
+   /* When the input field gets focus,
+        change its width to 100% */
+   input[type=text]:focus {
+     width: 70%;
+   }
+ 
+  #list{
+    font-size:  1.5em;
+    margin-left: 90px;
+   }
+ 
+.animals{
+   display: list-item;    
+  }
+  a{
+  	text-decoration: none;
+  	color: black;
+  }
+</style>
+<body>
+      
+    <!-- input tag -->
+    <input id="searchbar" onkeyup="search_animal()" type="text"
+        name="search" placeholder="Search countries....">
+      
+    <!-- ordered list -->
+    <ol id='list'>
+        <li class="world" >Afghanistan.</li>
+        <li class="world">Belgium</li>
+        <li class="world">China</li>
+        <li class="world">Denmark</li>
+        <li class="world">Ethiopia</li>
+        <li class="world">France</li>
+        <li class="world">Guyana</li>
+        <li class="world" ><a th:href="@{|/india|}" href="india.html">India</a></li>
+        <li class="world"><a href="japan.html">Japan</a></li>
+        <li class="world">Lebanon</li>
+        <li class="world">Texas*</li>
+    </ol>
+        
+    <!-- linking javascript -->
+    
+</body>
+      <script>
+ // JavaScript code
+    function search_animal() {
+    	let input = document.getElementById('searchbar').value
+    	input=input.toLowerCase();
+    	let x = document.getElementsByClassName('world');
+    	
+    	for (i = 0; i < x.length; i++) {
+    		if (!x[i].innerHTML.toLowerCase().includes(input)) {
+    			x[i].style.display="none";
+    		}
+    		else {
+    		x[i].style.display="list-item";	   			
+    			}
+    		}
+    	}
+    
+
+    </script>
+</html>

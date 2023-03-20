@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +62,18 @@ public class AuthController {
 		return "admin/dashboard01";
 	}
 
+	@RequestMapping(value = { "/ko" })
+	public String ko() {
+//	String name=null;
+//	System.out.println(name.length());
+	return "earth";
+	}
+	
+	@ExceptionHandler({Exception.class})
+	public String exceptionhandling() {
+		return "not_found";
+	}
+	
 	@GetMapping("/table")
 	private ModelAndView getAllBooks() throws IOException, InterruptedException {
 		ModelAndView mav = new ModelAndView();
